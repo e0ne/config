@@ -7,7 +7,8 @@ class openstack_project::server (
   $iptables_rules4           = [],
   $iptables_rules6           = [],
   $sysadmins                 = [],
-  $certname                  = $::fqdn
+  $certname                  = $::fqdn,
+  $install_resolv_conf       = true
 ) {
   class { 'openstack_project::template':
     iptables_public_tcp_ports => $iptables_public_tcp_ports,
@@ -15,6 +16,7 @@ class openstack_project::server (
     iptables_rules4           => $iptables_rules4,
     iptables_rules6           => $iptables_rules6,
     certname                  => $certname,
+    install_resolv_conf       => $install_resolv_conf,
   }
   class { 'exim':
     sysadmin => $sysadmins,
