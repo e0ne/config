@@ -80,6 +80,7 @@ node 'jenkins.openstack.org' {
     zmq_event_receivers     => ['logstash.openstack.org',
                                 'nodepool.openstack.org',
     ],
+    install_resolv_conf     => hiera('install_resolv_conf'),
   }
 }
 
@@ -138,6 +139,7 @@ node 'ci-puppetmaster.openstack.org' {
       'review.openstack.org',
     ],
     sysadmins       => hiera('sysadmins', ['admin']),
+    install_resolv_conf => hiera('install_resolv_conf'),
   }
 }
 

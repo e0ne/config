@@ -13,7 +13,8 @@ class openstack_project::jenkins (
   $ssl_chain_file_contents = '',
   $jenkins_ssh_private_key = '',
   $zmq_event_receivers = [],
-  $sysadmins = []
+  $sysadmins = [],
+  $install_resolv_conf = true
 ) {
   include openstack_project
 
@@ -23,6 +24,7 @@ class openstack_project::jenkins (
     iptables_rules6           => $iptables_rule,
     iptables_rules4           => $iptables_rule,
     sysadmins                 => $sysadmins,
+    install_resolv_conf       => $install_resolv_conf,
   }
 
   # Set defaults here because they evaluate variables which you cannot

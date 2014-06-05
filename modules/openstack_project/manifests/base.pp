@@ -2,8 +2,7 @@
 #
 class openstack_project::base(
   $certname = $::fqdn,
-  $install_users = true,
-  $puppetmaster_host = $::openstack_project::params::puppetmaster_host
+  $install_users = true
 ) {
   if ($::osfamily == 'Debian') {
     include apt
@@ -145,6 +144,7 @@ class openstack_project::base(
     }
   }
 
+  $puppetmaster_host = $::openstack_project::params::puppetmaster_host
   file { '/etc/puppet/puppet.conf':
     ensure  => present,
     owner   => 'root',
